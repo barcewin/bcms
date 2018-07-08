@@ -1,0 +1,4 @@
+<?php$badgename = htmlspecialchars($_POST['badgename']);$badgedesc = htmlspecialchars($_POST['badgedesc']);if(empty($badgename)) {     $error_title = "<font color='red'>(Badge name not found)</font>";}elseif(empty($badgedesc)) {    $error_desc = "<font color='red'>(Badge description not found)</font>";}else{$succes = "Badge name and description added";$myFile = "./swf/gamedata/external_flash_texts.txt";$fh = fopen($myFile, 'a') or die("File not found.");$string = "badge_desc_".$badgename."=".$badgedesc."";fwrite($fh, nl2br($string). "\r\n");fclose($fh);}?><form method="post">
+Badge name <?php if(isset($error_title)) { echo $error_title; }?></br><input id="name" name="badgename"></br>
+Badge description <?php if(isset($error_desc)) { echo $error_desc; }?></br><input id="name" name="badgedesc"></br>
+<input type="submit" name="submit" value="Submit">
